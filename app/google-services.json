@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1051863196603",
+    "firebase_url": "https://nutrilyze-599c8-default-rtdb.firebaseio.com",
+    "project_id": "nutrilyze-599c8",
+    "storage_bucket": "nutrilyze-599c8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051863196603:android:119bb94223e394b1519a9e",
+        "android_client_info": {
+          "package_name": "com.example.finallyy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBROa7cLaAqnfUcAqIb2Ygb_XELplpi-x8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
