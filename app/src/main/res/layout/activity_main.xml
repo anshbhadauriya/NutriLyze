@@ -8,6 +8,7 @@
     android:background="@drawable/bg_gradient"
     android:padding="24dp">
 
+
     <TextView
         android:id="@+id/loginTitle"
         android:layout_width="0dp"

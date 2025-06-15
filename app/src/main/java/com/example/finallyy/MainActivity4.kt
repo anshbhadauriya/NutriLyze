@@ -25,6 +25,7 @@ class MainActivity4 : AppCompatActivity() {
         } else {
             val url = "https://world.openfoodfacts.org/api/v2/product/$scannedId.json"
             fetchProductData(url)
+            //comment
         }
     }
 
