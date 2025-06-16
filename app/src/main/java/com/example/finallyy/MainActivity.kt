@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
-
+//comment
         loginButton.setOnClickListener {
             val email = username.text.toString()
             val password2 = password.text.toString()
