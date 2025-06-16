@@ -17,7 +17,7 @@
             android:hardwareAccelerated="true"
             android:supportsRtl="true"
             android:theme="@style/Theme.Finallyy">
-             <!-- Splash Screen Activity -->
+
             <activity
                 android:name=".splashscreen"
                 android:exported="true">
