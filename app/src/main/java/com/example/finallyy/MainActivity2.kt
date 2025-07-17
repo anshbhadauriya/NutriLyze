@@ -60,7 +60,7 @@ class MainActivity2 : AppCompatActivity() {
                             user?.sendEmailVerification()?.addOnCompleteListener { verifyTask ->
                                 if (verifyTask.isSuccessful) {
                                     Toast.makeText(this, "Registration successful. Verification email sent to ${user.email}. Please verify your email before login.", Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, MainActivity3::class.java)
+                                    val intent = Intent(this, Turtorial1Activity::class.java)
                                     intent.putExtra("firstName", firstName.text.toString())
                                     startActivity(intent)
                                     finish()
