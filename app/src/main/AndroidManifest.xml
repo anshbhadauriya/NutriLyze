@@ -20,9 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finallyy">
 
-        <!-- Show this screen first -->
+        <!-- Splash Screen set as launcher -->
         <activity
-            android:name=".Turtorial1Activity"
+            android:name=".splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,9 @@
         </activity>
 
         <!-- Other screens -->
+        <activity android:name=".Turtorial1Activity" android:exported="false" />
         <activity android:name=".Turtorial2Activity" />
+        <activity android:name=".Turtorial3Activity" />
         <activity android:name=".MainActivity" android:exported="true" />
         <activity android:name=".MainActivity2" android:exported="false" />
         <activity android:name=".MainActivity3" android:exported="false" />
@@ -40,7 +42,6 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
             tools:replace="android:theme" />
-        <activity android:name=".splashscreen" android:exported="true" />
 
     </application>
 </manifest>

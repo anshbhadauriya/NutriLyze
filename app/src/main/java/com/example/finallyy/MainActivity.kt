@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, MainActivity3::class.java)
+                            val intent = Intent(this, Turtorial1Activity::class.java)
                             intent.putExtra("username", username.text.toString())
                             startActivity(intent)
                             finish()
