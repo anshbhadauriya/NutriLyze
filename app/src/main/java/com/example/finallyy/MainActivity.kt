@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        auth=FirebaseAuth.getInstance()
         val currentUser: FirebaseUser? = auth.currentUser
         if(currentUser != null) {
             val intent = Intent(this, MainActivity3::class.java)
@@ -33,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         val loginButton = findViewById<Button>(R.id.loginButton)
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
+        val guestButton = findViewById<TextView>(R.id.guestbutton)
+        guestButton.setOnClickListener {
+            val intent = Intent(this, Turtorial1Activity::class.java)
+            startActivity(intent)
+        }
+
 
         registerText.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)

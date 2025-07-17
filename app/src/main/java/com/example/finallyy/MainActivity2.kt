@@ -11,25 +11,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main2)
         auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        db = FirebaseDatabase.getInstance().reference
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+
+
 
         val firstName = findViewById<EditText>(R.id.firstName)
         val backImage = findViewById<ImageView>(R.id.myImageView)
@@ -64,17 +63,10 @@ class MainActivity2 : AppCompatActivity() {
                         if (task.isSuccessful) {
 
                             val user = auth.currentUser
-                            val data = hashMapOf("first_name" to firstNameText)
-                            user?.uid?.let { uid ->
-                                db.collection("users").document(uid)
-                                    .set(data)
-                                    .addOnSuccessListener {
-                                        Toast.makeText(this, "First name saved!", Toast.LENGTH_SHORT).show()
-                                    }
-                                    .addOnFailureListener { e ->
-                                        Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                                    }
-                            }
+                            val data = mapOf("first_name" to firstNameText,
+                                           "email" to emailText)
+                            db.child("Details").push().setValue(data)
+
                             user?.sendEmailVerification()?.addOnCompleteListener { verifyTask ->
                                 if (verifyTask.isSuccessful) {
                                     Toast.makeText(this, "Registration successful. Verification email sent to ${user.email}. Please verify your email before login.", Toast.LENGTH_LONG).show()
