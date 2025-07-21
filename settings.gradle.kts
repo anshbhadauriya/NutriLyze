@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "finallyy"
+rootProject.name = "NutriLyze"
 include(":app")
  
