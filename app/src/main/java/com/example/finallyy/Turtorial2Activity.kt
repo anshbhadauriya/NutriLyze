@@ -17,4 +17,4 @@ class Turtorial2Activity : AppCompatActivity() {
         }
     }
 }
-//debugged
+
