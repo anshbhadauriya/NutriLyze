@@ -14,6 +14,7 @@ class Turtorial2Activity : AppCompatActivity() {
         nextBtn.setOnClickListener {
             val intent = Intent(this, Turtorial3Activity::class.java)
             startActivity(intent)
+            //debugged
         }
     }
 }
