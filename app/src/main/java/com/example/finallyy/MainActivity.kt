@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlin.apply
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password2)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            saveUserEmailToPreferences(email)
                             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, Turtorial1Activity::class.java)
                             intent.putExtra("username", username.text.toString())
@@ -72,4 +74,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    fun saveUserEmailToPreferences(email: String) {
+        val sharedPref = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("user_email", email)  // key = "user_email"
+            apply()  // or commit()
+        }
+    }
 }
+
+

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <!-- Header Section with Product Info -->
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardHeader"
             android:layout_width="0dp"
@@ -29,32 +29,51 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/ivProductImage"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="Product Image"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_gallery" />
+
+                <TextView
+                    android:id="@+id/tvLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Wait, loading..."
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text="Product Name"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:gravity="center" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:gravity="center"
                     android:text="Brand"
                     android:textColor="#666666"
-                    android:textSize="16sp"
-                    android:gravity="center" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Nutri Score Section - Featured prominently -->
+        <!-- Nutri Score Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardNutriScore"
             android:layout_width="0dp"
@@ -70,46 +89,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:padding="24dp"
-                android:gravity="center">
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
                     android:text="Nutri-Score"
                     android:textColor="#666666"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvNutriScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:background="@drawable/nutri_score_bg"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="16dp"
                     android:text="--"
                     android:textColor="#000000"
                     android:textSize="64sp"
-                    android:textStyle="bold"
-                    android:background="@drawable/nutri_score_bg"
-                    android:paddingHorizontal="32dp"
-                    android:paddingVertical="16dp" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvNutriScoreExplanation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text=""
                     android:textColor="#666666"
-                    android:textSize="14sp"
-                    android:textAlignment="center"
-                    android:gravity="center" />
+                    android:textSize="14sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Nutrition Facts Section -->
+        <!-- Nutrition Facts Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardNutrition"
             android:layout_width="0dp"
@@ -132,21 +150,21 @@
                     android:id="@+id/tvNutritionHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Nutrition Facts"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
+                    android:textStyle="bold" />
 
-                <!-- Calories - Highlighted -->
+                <!-- Calories -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="#F5F5F5"
-                    android:padding="12dp"
                     android:layout_marginBottom="8dp"
-                    android:gravity="center_vertical">
+                    android:background="#F5F5F5"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -171,10 +189,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
                     android:layout_marginBottom="4dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -196,17 +214,17 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#E0E0E0"
-                    android:layout_marginVertical="4dp" />
+                    android:layout_marginVertical="4dp"
+                    android:background="#E0E0E0" />
 
                 <!-- Sugars -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
                     android:layout_marginBottom="4dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -228,17 +246,17 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#E0E0E0"
-                    android:layout_marginVertical="4dp" />
+                    android:layout_marginVertical="4dp"
+                    android:background="#E0E0E0" />
 
                 <!-- Protein -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
                     android:layout_marginBottom="4dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -260,16 +278,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#E0E0E0"
-                    android:layout_marginVertical="4dp" />
+                    android:layout_marginVertical="4dp"
+                    android:background="#E0E0E0" />
 
                 <!-- Sodium -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
+                    android:padding="12dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -290,11 +308,23 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Bottom spacing -->
+
         <Space
+            android:id="@+id/space"
             android:layout_width="match_parent"
             android:layout_height="24dp"
             app:layout_constraintTop_toBottomOf="@id/cardNutrition" />
+
+        <Button
+            android:id="@+id/btnSaveProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save Product"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/cardNutrition"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

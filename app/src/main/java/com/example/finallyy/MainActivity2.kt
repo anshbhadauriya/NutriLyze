@@ -62,6 +62,7 @@ class MainActivity2 : AppCompatActivity() {
                     .addOnCompleteListener(this){ task->
                         if (task.isSuccessful) {
 
+
                             val user = auth.currentUser
                             val data = mapOf("first_name" to firstNameText,
                                            "email" to emailText)
@@ -69,6 +70,7 @@ class MainActivity2 : AppCompatActivity() {
 
                             user?.sendEmailVerification()?.addOnCompleteListener { verifyTask ->
                                 if (verifyTask.isSuccessful) {
+                                    savename(firstNameText,emailText)
                                     Toast.makeText(this, "Registration successful. Verification email sent to ${user.email}. Please verify your email before login.", Toast.LENGTH_LONG).show()
                                     val intent = Intent(this, Turtorial1Activity::class.java)
                                     intent.putExtra("firstName", firstName.text.toString())
@@ -87,7 +89,17 @@ class MainActivity2 : AppCompatActivity() {
 
         }
 
+
     }
+    fun savename(firstName: String, email: String) {
+        val sharedPref = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("FirstName", firstName)
+            putString("Email", email)
+            apply()
+        }
+    }
+
 
 
 }

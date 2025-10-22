@@ -1,7 +1,6 @@
 # NutriLyze 🍽️
 
 NutriLyze is an Android app built to help users make healthier food choices by simply scanning the barcode or checking the nutrition label of packaged food products. The app gives an easy-to-understand **health grade**, even translating nutritional information into **Hindi** to ensure accessibility for a wider audience.
-👉 You can download our app from here: [nutrilyze.netlify.app](https://nutrilyze.netlify.app/)
 
 
 ##  Features
