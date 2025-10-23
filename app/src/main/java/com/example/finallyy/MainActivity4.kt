@@ -195,3 +195,4 @@ data class Product(
     val nutrition_grades: String?,
     val image_front_url: String?
 )
+//
