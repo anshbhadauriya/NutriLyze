@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -19,42 +20,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Finallyy">
+
+        <!-- ✅ ADDED -->
         <activity
             android:name=".SavedProductsActivity"
             android:exported="false" />
+
+        <!-- Existing Activities (unchanged)
         <activity
             android:name=".activity_result"
-            android:exported="false" /> <!-- Splash Screen set as launcher -->
+            android:exported="false" />
+            -->
+
         <activity
             android:name=".splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Other screens -->
+        </activity>
+
         <activity
             android:name=".Turtorial1Activity"
             android:exported="false" />
+
         <activity android:name=".Turtorial2Activity" />
         <activity android:name=".Turtorial3Activity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity3"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity4"
             android:exported="false" />
+
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
             tools:replace="android:theme" />
+
     </application>
 
 </manifest>
