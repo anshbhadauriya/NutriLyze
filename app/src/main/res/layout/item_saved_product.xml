@@ -1,72 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="12dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginHorizontal="4dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tvSavedProductName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Name"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tvSavedBrand"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brand"
             android:textSize="14sp"
             android:textColor="#666666"/>
 
         <TextView
             android:id="@+id/tvSavedCalories"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calories"/>
-
-        <TextView
-            android:id="@+id/tvSavedFat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fat"/>
-
-        <TextView
-            android:id="@+id/tvSavedSugars"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sugars"/>
-
-        <TextView
-            android:id="@+id/tvSavedProteins"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Proteins"/>
-
-        <TextView
-            android:id="@+id/tvSavedSodium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sodium"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tvSavedNutriScore"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NutriScore"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="22sp"
+            android:textStyle="bold"/>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
