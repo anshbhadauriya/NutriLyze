@@ -45,6 +45,12 @@ class MainActivity3 : AppCompatActivity() {
             )
         }
 
+        val summaryBtn = findViewById<Button>(R.id.btnHealthSummary)
+        summaryBtn.setOnClickListener {
+            startActivity(Intent(this, HealthSummaryActivity::class.java))
+        }
+
+
 
 
 
