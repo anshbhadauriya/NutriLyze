@@ -50,6 +50,18 @@ class MainActivity3 : AppCompatActivity() {
             startActivity(Intent(this, HealthSummaryActivity::class.java))
         }
 
+        val manualBtn = findViewById<Button>(R.id.btnAddManual)
+        manualBtn.setOnClickListener {
+            startActivity(Intent(this, AddManualFoodActivity::class.java))
+        }
+
+        val otherSavedBtn = findViewById<Button>(R.id.btnOtherSavedFoods)
+        otherSavedBtn.setOnClickListener {
+            startActivity(Intent(this, OtherSavedFoodsActivity::class.java))
+        }
+
+
+
 
 
 

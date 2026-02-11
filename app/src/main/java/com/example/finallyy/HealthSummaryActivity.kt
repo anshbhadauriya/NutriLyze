@@ -28,49 +28,95 @@ class HealthSummaryActivity : AppCompatActivity() {
     private fun calculateHealthSummary() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
-        val ref = FirebaseDatabase.getInstance()
-            .getReference("users")
+        val database = FirebaseDatabase.getInstance()
+
+        var totalProducts = 0
+        var totalCalories = 0.0
+        var totalProtein = 0.0
+        var totalFat = 0.0
+        var totalCarbs = 0.0
+        var scoreSum = 0
+
+        // 🔹 1️⃣ Fetch saved packaged products
+        val savedRef = database.getReference("users")
             .child(userId)
             .child("savedProducts")
 
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+        savedRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                var totalProducts = 0
-                var totalCalories = 0.0
-                var scoreSum = 0
 
                 for (child in snapshot.children) {
                     val product = child.getValue(SavedProduct::class.java)
                     if (product != null) {
-
                         totalProducts++
 
-                        // Extract calories number
                         val caloriesNumber =
-                            product.calories.replace("[^0-9.]".toRegex(), "").toDoubleOrNull() ?: 0.0
+                            product.calories.replace("[^0-9.]".toRegex(), "")
+                                .toDoubleOrNull() ?: 0.0
 
                         totalCalories += caloriesNumber
-
                         scoreSum += scoreToNumber(product.nutriScore)
                     }
                 }
 
-                val averageScore = if (totalProducts > 0)
-                    scoreSum.toDouble() / totalProducts
-                else 0.0
+                // 🔹 2️⃣ Fetch today's manual logs
+                val date = java.text.SimpleDateFormat("yyyy-MM-dd",
+                    java.util.Locale.getDefault()).format(java.util.Date())
 
-                val avgScoreLetter = numberToScore(averageScore)
+                val manualRef = database.getReference("users")
+                    .child(userId)
+                    .child("dailyLogs")
+                    .child(date)
+                    .child("foods")
 
-                tvTotalProducts.text = "Total Products: $totalProducts"
-                tvTotalCalories.text = "Total Calories: %.2f kcal".format(totalCalories)
-                tvAverageScore.text = "Average NutriScore: $avgScoreLetter"
-                tvHealthRating.text = "Health Rating: ${healthLabel(avgScoreLetter)}"
+                manualRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot2: DataSnapshot) {
+
+                        for (child in snapshot2.children) {
+                            val calories =
+                                child.child("calories").getValue(Double::class.java) ?: 0.0
+                            val protein =
+                                child.child("protein").getValue(Double::class.java) ?: 0.0
+                            val fat =
+                                child.child("fat").getValue(Double::class.java) ?: 0.0
+                            val carbs =
+                                child.child("carbs").getValue(Double::class.java) ?: 0.0
+
+                            totalCalories += calories
+                            totalProtein += protein
+                            totalFat += fat
+                            totalCarbs += carbs
+                        }
+
+                        val averageScore =
+                            if (totalProducts > 0)
+                                scoreSum.toDouble() / totalProducts
+                            else 0.0
+
+                        val avgScoreLetter = numberToScore(averageScore)
+
+                        tvTotalProducts.text = "Total Packaged Products: $totalProducts"
+                        tvTotalCalories.text =
+                            "Total Calories: %.2f kcal".format(totalCalories)
+                        tvAverageScore.text =
+                            "Average NutriScore: $avgScoreLetter"
+                        tvHealthRating.text =
+                            "Health Rating: ${healthLabel(avgScoreLetter)}"
+
+                        // You can add these if you want
+                        // tvProtein.text = "Protein: %.2f g".format(totalProtein)
+                        // tvFat.text = "Fat: %.2f g".format(totalFat)
+                        // tvCarbs.text = "Carbs: %.2f g".format(totalCarbs)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {}
+                })
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
     }
+
 
     private fun scoreToNumber(score: String): Int {
         return when (score.uppercase()) {
